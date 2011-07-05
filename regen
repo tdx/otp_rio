@@ -1,0 +1,33 @@
+#!/bin/sh
+
+PROJ="rio"
+
+echo ""
+echo "======================================================================="
+echo " This will nuke rel/${PROJ} and regenerate using rebar..."
+echo "======================================================================="
+echo ""
+sleep 2
+
+set -e
+
+rm -rf rel/${PROJ}
+
+./rebar compile
+./rebar generate
+
+cd rel/${PROJ}/lib/
+echo -n "Unpacking .ez files"
+for f in *.ez
+do
+  echo -n "."
+  unzip $f > /dev/null
+  rm $f
+done
+echo
+
+cd ../../../
+echo "OK"
+
+rm -rf rel/rio_0.1.0
+mv rel/rio rel/rio_0.1.0
