@@ -1,0 +1,19 @@
+1. ./regen
+  This will create rel/rio_0.1.0
+
+2. git checkout v2
+    In this branch we have removed rio_mod_01.erl from apps/rio/src and 
+    have added rio_mod_02.erl.
+
+3. ./upgrade
+  This will create rel/rio_0.1.1.tar.gz
+
+4. cp rel/rio_0.1.1..targ.gz rel/rio_0.1.0/releases
+
+5. rel/rio_0.1.0/bin/rio console
+1>{ok,Vsn} = release_handler:unpack_release("rio_0.1.1").
+2>release_handler:install_release(Vsn). %% crash here
+
+6. You was right, if rio_mod_01 is loaded before release_handler:install_release call when upgrade 
+  successfull. But why module rio_mod_01 is not loaded if erlang node in embedded mode???
+
