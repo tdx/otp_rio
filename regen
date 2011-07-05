@@ -29,5 +29,9 @@ echo
 cd ../../../
 echo "OK"
 
-rm -rf rel/rio_0.1.0
-mv rel/rio rel/rio_0.1.0
+rm -rf rel/rio_0.1.1
+mv rel/rio rel/rio_0.1.1
+cd rel
+ln -s rio_0.1.1 rio
+cd ..
+

@@ -1,0 +1,9 @@
+#!/bin/sh
+
+PROJ="rio"
+PREV_VSN="0.1.0"
+
+./rebar clean && \
+./regen && \
+./rebar generate-appups previous_release=${PROJ}_${PREV_VSN} && \
+./rebar generate-upgrade previous_release=${PROJ}_${PREV_VSN} || exit 1

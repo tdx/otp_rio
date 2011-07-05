@@ -1,7 +1,7 @@
 {application, rio,
  [
   {description, "Relup Instruction Order bug demo"},
-  {vsn, "0.1.0"},
+  {vsn, "0.1.1"},
   {registered, []},
   {applications, [
                   kernel,
